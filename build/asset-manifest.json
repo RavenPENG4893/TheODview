@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "./static/css/main.ca159632.css",
-    "main.js": "./static/js/main.a8726f40.js",
-    "index.html": "./index.html",
-    "main.ca159632.css.map": "./static/css/main.ca159632.css.map",
-    "main.a8726f40.js.map": "./static/js/main.a8726f40.js.map"
+    "main.css": "/TheODview/static/css/main.0d1d9f9a.css",
+    "main.js": "/TheODview/static/js/main.f2194bf3.js",
+    "index.html": "/TheODview/index.html",
+    "main.0d1d9f9a.css.map": "/TheODview/static/css/main.0d1d9f9a.css.map",
+    "main.f2194bf3.js.map": "/TheODview/static/js/main.f2194bf3.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca159632.css",
-    "static/js/main.a8726f40.js"
+    "static/css/main.0d1d9f9a.css",
+    "static/js/main.f2194bf3.js"
   ]
 }
