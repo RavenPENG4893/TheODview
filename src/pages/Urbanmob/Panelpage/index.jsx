@@ -59,7 +59,7 @@ export default function Panelpage() {
 
   //订阅activepage，检测到activepage一但改变，就更新tab
   unsubscribe('activepage')
-  useSubscribe('activepage', function (msg: any, data: any) {
+  useSubscribe('activepage', function (msg, data) {
     setactivepage(data)
   });
 

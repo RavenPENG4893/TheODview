@@ -4,7 +4,7 @@ import './index.css'
 export default function Loadingpage() {
     return (<div >
         <section className='main'>
-            <div class="loading">
+            <div className="loading">
                 <span></span>
                 <span></span>
                 <span></span>

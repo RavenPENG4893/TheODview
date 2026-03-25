@@ -52,3 +52,11 @@
 .icon-firstperson:before {
     content: "\e602";
 }
+
+/* P3: 移动端 Drawer 中面板宽度自适应 */
+@media screen and (max-width: 768px) {
+    .ant-tabs-content {
+        width: 100%;
+        margin-left: 0;
+    }
+}
