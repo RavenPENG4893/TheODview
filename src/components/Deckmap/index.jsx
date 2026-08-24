@@ -169,6 +169,7 @@ export default function Deckmap() {
         effects={effects}
         controller={{ doubleClickZoom: false, inertia: true, touchRotate: true }}
         style={{ zIndex: 0 }}
+        glOptions={{ preserveDrawingBuffer: true }}
         ContextProvider={MapContext.Provider}
         onViewStateChange={onViewStateChange}
         getTooltip={getTooltip}
@@ -178,6 +179,7 @@ export default function Deckmap() {
           <StaticMap reuseMaps
             mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
             mapStyle={`mapbox://styles/${MAPBOX_USER}/${mapStyle}`}
+            mapOptions={{ preserveDrawingBuffer: true }}
             preventStyleDiffing={true}>
             <div className='mapboxgl-ctrl-bottom-left' style={{ bottom: '20px' }}>
               <ScaleControl maxWidth={100} unit="metric" />

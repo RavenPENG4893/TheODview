@@ -79,15 +79,39 @@ export const exportFlowsAsCSV = (flows, locations) => {
     downloadCSV(csvData, 'od_export');
 }
 
-// 地图截图导出
+// 地图截图导出（合成底图 + deck.gl 图层）
 export const exportScreenshot = () => {
-    const deckCanvas = document.querySelector('#deckgl-wrapper canvas');
-    if (!deckCanvas) {
-        console.error('Canvas not found');
+    // deck.gl 图层 canvas（透明背景，只绘 OD 流向）
+    const deckCanvas = document.querySelector('#deckgl-wrapper canvas.deckgl-canvas')
+        || document.querySelector('#deckgl-wrapper canvas');
+    // mapbox 底图 canvas
+    const mapCanvas = document.querySelector('.mapboxgl-canvas');
+
+    if (!deckCanvas && !mapCanvas) {
+        console.error('No canvas found for screenshot');
         return false;
     }
+
     try {
-        const dataURL = deckCanvas.toDataURL('image/png');
+        let dataURL;
+        const targetCanvas = deckCanvas || mapCanvas;
+        const width = targetCanvas.width || targetCanvas.offsetWidth * window.devicePixelRatio;
+        const height = targetCanvas.height || targetCanvas.offsetHeight * window.devicePixelRatio;
+
+        if (mapCanvas && deckCanvas && mapCanvas !== deckCanvas) {
+            // 合成：先画底图，再画 deck.gl 图层
+            const composite = document.createElement('canvas');
+            composite.width = width;
+            composite.height = height;
+            const ctx = composite.getContext('2d');
+            ctx.drawImage(mapCanvas, 0, 0, width, height);
+            ctx.drawImage(deckCanvas, 0, 0, width, height);
+            dataURL = composite.toDataURL('image/png');
+        } else {
+            // 只有一个 canvas，直接导出
+            dataURL = targetCanvas.toDataURL('image/png');
+        }
+
         const link = document.createElement('a');
         link.href = dataURL;
         link.download = `odview_${new Date().toISOString().slice(0, 10)}.png`;
