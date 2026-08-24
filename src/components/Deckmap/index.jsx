@@ -179,6 +179,7 @@ export default function Deckmap() {
           <StaticMap reuseMaps
             mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
             mapStyle={`mapbox://styles/${MAPBOX_USER}/${mapStyle}`}
+            preserveDrawingBuffer={true}
             mapOptions={{ preserveDrawingBuffer: true }}
             preventStyleDiffing={true}>
             <div className='mapboxgl-ctrl-bottom-left' style={{ bottom: '20px' }}>
